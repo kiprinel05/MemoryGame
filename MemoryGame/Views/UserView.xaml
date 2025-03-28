@@ -1,0 +1,15 @@
+<Window x:Class="MemoryGame.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login" Height="350" Width="400">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Select User" FontSize="20" Margin="0,10"/>
+            <ComboBox ItemsSource="{Binding Users}" DisplayMemberPath="Username"
+                      SelectedItem="{Binding SelectedUser}"/>
+            <Button Content="Upload Avatar" Command="{Binding UploadAvatarCommand}" Margin="0,10"/>
+            <Image Source="{Binding SelectedUser.AvatarPath}" Width="100" Height="100"/>
+            <Button Content="Play" Command="{Binding PlayCommand}" IsEnabled="{Binding CanPlay}" Margin="0,10"/>
+        </StackPanel>
+    </Grid>
+</Window>

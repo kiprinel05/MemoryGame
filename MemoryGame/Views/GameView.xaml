@@ -1,0 +1,25 @@
+<Window x:Class="MemoryGame.Views.GameView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Memory Game" Height="600" Width="600">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="{Binding TimeRemaining}" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
+            <UniformGrid Columns="{Binding Columns}" Rows="{Binding Rows}">
+                <ItemsControl ItemsSource="{Binding Cards}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding FlipCardCommand}" CommandParameter="{Binding}">
+                                <Image Source="{Binding ImagePath}" Width="100" Height="100"/>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </UniformGrid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Save Game" Command="{Binding SaveGameCommand}" Margin="5"/>
+                <Button Content="Exit" Command="{Binding ExitGameCommand}" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
