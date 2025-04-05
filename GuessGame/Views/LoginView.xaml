@@ -5,12 +5,113 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:GuessGame.ViewModels"
         mc:Ignorable="d"
-        Title="Login" Height="500" Width="400">
+        Title="Login"
+        Height="500"
+        Width="400"
+        Background="#1e1e2f"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI">
+
     <Window.DataContext>
         <vm:LoginViewModel/>
     </Window.DataContext>
 
-    <Grid Margin="10">
+    <Window.Resources>
+        <!-- Brushes -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#2d2d3a"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="#3a3a4d"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#4e9cff"/>
+        <SolidColorBrush x:Key="TextBrush" Color="#ffffff"/>
+        <SolidColorBrush x:Key="MutedTextBrush" Color="#bbbbbb"/>
+
+        <!-- Button Style -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- TextBox Style -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource SecondaryBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#555"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0 0 0 10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                CornerRadius="6">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="2"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                    <Setter Property="Background" Value="#3f3f5a"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ListBox Style -->
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0 0 0 10"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              Margin="5"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="2*"/>
@@ -18,43 +119,61 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Select a user:" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
+        <!-- Title -->
+        <TextBlock Text="Select a user:"
+                   Foreground="{StaticResource TextBrush}"
+                   FontWeight="Bold"
+                   FontSize="18"
+                   Margin="0 0 0 10"/>
 
-       <ListBox Grid.Row="1" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
-    <ListBox.ItemTemplate>
-        <DataTemplate>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <Image Source="{Binding AvatarPath}" Width="40" Height="40" Margin="0 0 10 0"/>
-                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="14"/>
-            </StackPanel>
-        </DataTemplate>
-    </ListBox.ItemTemplate>
-</ListBox>
+        <!-- User List -->
+        <ListBox Grid.Row="1"
+                 ItemsSource="{Binding Users}"
+                 SelectedItem="{Binding SelectedUser}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Image Source="{Binding AvatarPath}" Width="40" Height="40" Margin="0 0 10 0"/>
+                        <TextBlock Text="{Binding Name}"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="{StaticResource TextBrush}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <!-- Buttons -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
-            <Button Content="New User" Command="{Binding AddUserCommand}" Margin="5"/>
-            <Button Content="Edit User" Command="{Binding EditUserCommand}" Margin="5"/>
-            <Button Content="Delete User" Command="{Binding DeleteUserCommand}" Margin="5"/>
-            <Button Content="Login" Command="{Binding PlayCommand}" Margin="5"/>
-        </StackPanel>
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0 10">
+            <Button Content="New User" Command="{Binding AddUserCommand}"/>
+            <Button Content="Edit User" Command="{Binding EditUserCommand}"/>
+            <Button Content="Delete User" Command="{Binding DeleteUserCommand}"/>
+            <Button Content="Login" Command="{Binding PlayCommand}"/>
+        </WrapPanel>
 
         <!-- User Form -->
-        <StackPanel Grid.Row="3" Visibility="{Binding UserFormVisibility}" Background="#FFEFEFEF" Margin="0 10 0 0">
-            <TextBlock Text="Name:"/>
-            <TextBox Text="{Binding EditingUser.Name, UpdateSourceTrigger=PropertyChanged}" Margin="0 5 0 10"/>
+        <Border Grid.Row="3"
+                Background="{StaticResource SecondaryBrush}"
+                CornerRadius="12"
+                Margin="0 10 0 0"
+                Visibility="{Binding UserFormVisibility}">
+            <StackPanel>
+                <TextBlock Text="Name:" Foreground="{StaticResource MutedTextBrush}"/>
+                <TextBox Text="{Binding EditingUser.Name, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <TextBlock Text="Avatar:"/>
-            <Image Source="{Binding CurrentAvatar}" Height="100" Margin="0 5"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
-                <Button Content="⟨" Width="40" Command="{Binding PrevAvatarCommand}"/>
-                <Button Content="⟩" Width="40" Command="{Binding NextAvatarCommand}" Margin="10 0 0 0"/>
-            </StackPanel>
+                <TextBlock Text="Avatar:" Foreground="{StaticResource MutedTextBrush}"/>
+                <Image Source="{Binding CurrentAvatar}" Height="100" Margin="0 5"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
-                <Button Content="Save" Command="{Binding SaveUserCommand}" Margin="5"/>
-                <Button Content="Cancel" Command="{Binding CancelEditCommand}" Margin="5"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                    <Button Content="⟨" Width="40" Command="{Binding PrevAvatarCommand}"/>
+                    <Button Content="⟩" Width="40" Command="{Binding NextAvatarCommand}" Margin="10 0 0 0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                    <Button Content="Save" Command="{Binding SaveUserCommand}"/>
+                    <Button Content="Cancel" Command="{Binding CancelEditCommand}"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </Border>
     </Grid>
 </Window>

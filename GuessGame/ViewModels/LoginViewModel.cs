@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GuessGame.ViewModels
 {
@@ -60,6 +61,8 @@ namespace GuessGame.ViewModels
             }
         }
 
+        private User _originalUserForEdit; // 🔧 păstrează userul original când edităm
+
         // Commands
         public ICommand AddUserCommand { get; }
         public ICommand EditUserCommand { get; }
@@ -68,7 +71,7 @@ namespace GuessGame.ViewModels
         public ICommand NextAvatarCommand { get; }
         public ICommand PrevAvatarCommand { get; }
         public ICommand SaveUserCommand => new RelayCommand(SaveUser);
-        public ICommand CancelEditCommand => new RelayCommand(() => UserFormVisibility = Visibility.Collapsed);
+        public ICommand CancelEditCommand => new RelayCommand(CancelEdit);
 
         public LoginViewModel()
         {
@@ -96,8 +99,12 @@ namespace GuessGame.ViewModels
 
         private void AddUser()
         {
+            SelectedUser = null;
+            OnPropertyChanged(nameof(SelectedUser));
+
             EditingUser = new User();
             _currentAvatarIndex = 0;
+            _originalUserForEdit = null;
             UserFormVisibility = Visibility.Visible;
             OnPropertyChanged(nameof(CurrentAvatar));
         }
@@ -105,11 +112,15 @@ namespace GuessGame.ViewModels
         private void EditUser()
         {
             if (SelectedUser == null) return;
+
+            _originalUserForEdit = SelectedUser;
+
             EditingUser = new User
             {
                 Name = SelectedUser.Name,
                 AvatarPath = SelectedUser.AvatarPath
             };
+
             _currentAvatarIndex = avatars.IndexOf(SelectedUser.AvatarPath);
             if (_currentAvatarIndex < 0) _currentAvatarIndex = 0;
 
@@ -121,6 +132,7 @@ namespace GuessGame.ViewModels
         {
             if (SelectedUser != null)
             {
+
                 Users.Remove(SelectedUser);
                 SelectedUser = null;
                 SaveUsers();
@@ -137,21 +149,34 @@ namespace GuessGame.ViewModels
 
             EditingUser.AvatarPath = avatars[_currentAvatarIndex];
 
-            if (SelectedUser != null && Users.Contains(SelectedUser))
+            if (_originalUserForEdit != null)
             {
-                SelectedUser.Name = EditingUser.Name;
-                SelectedUser.AvatarPath = EditingUser.AvatarPath;
+                // Editare
+                _originalUserForEdit.Name = EditingUser.Name;
+                _originalUserForEdit.AvatarPath = EditingUser.AvatarPath;
+                SelectedUser = _originalUserForEdit;
             }
             else
             {
-                Users.Add(new User
+                // Adăugare
+                var newUser = new User
                 {
                     Name = EditingUser.Name,
                     AvatarPath = EditingUser.AvatarPath
-                });
+                };
+                Users.Add(newUser);
+                SelectedUser = newUser;
             }
 
             SaveUsers();
+            UserFormVisibility = Visibility.Collapsed;
+            _originalUserForEdit = null;
+        }
+
+        private void CancelEdit()
+        {
+            EditingUser = null;
+            _originalUserForEdit = null;
             UserFormVisibility = Visibility.Collapsed;
         }
 
