@@ -1,29 +1,41 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace GuessGame.Models
 {
     public class User : INotifyPropertyChanged
     {
-        private string name;
+        private string _name;
+        private string _avatarPath;
+
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
-                if (name != value)
+                if (_name != value)
                 {
-                    name = value;
-                    OnPropertyChanged(nameof(Name));
+                    _name = value;
+                    OnPropertyChanged();
                 }
             }
         }
 
-        public string AvatarPath { get; set; }
+        public string AvatarPath
+        {
+            get => _avatarPath;
+            set
+            {
+                if (_avatarPath != value)
+                {
+                    _avatarPath = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        protected void OnPropertyChanged([CallerMemberName] string propName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
     }
 }
