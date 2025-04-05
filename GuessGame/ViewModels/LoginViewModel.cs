@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Collections.Generic;
 using System.Linq;
+using GuessGame.Views;
 
 namespace GuessGame.ViewModels
 {
@@ -63,7 +64,7 @@ namespace GuessGame.ViewModels
             }
         }
 
-        private User _originalUserForEdit; // 🔧 păstrează userul original când edităm
+        private User _originalUserForEdit;
 
         // Commands
         public ICommand AddUserCommand { get; }
@@ -186,9 +187,12 @@ namespace GuessGame.ViewModels
         {
             if (SelectedUser != null)
             {
-                MessageBox.Show($"Logged in as {SelectedUser.Name} with avatar {SelectedUser.AvatarPath}");
+                var gameWindow = new GameWindow(SelectedUser);
+                gameWindow.Show();
+                Application.Current.MainWindow.Close();
             }
         }
+
 
         private void NextAvatar()
         {

@@ -9,6 +9,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\GameImages\Animals\caini.jpg" />
+    <None Remove="Resources\GameImages\Animals\caini.png" />
+    <None Remove="Resources\GameImages\Animals\cal.jpg" />
+    <None Remove="Resources\GameImages\Animals\cal.png" />
+    <None Remove="Resources\GameImages\Animals\cameleon.jpg" />
+    <None Remove="Resources\GameImages\Animals\cameleon.png" />
+    <None Remove="Resources\GameImages\Animals\caprioara.jpg" />
+    <None Remove="Resources\GameImages\Animals\cat.jpg" />
+    <None Remove="Resources\GameImages\Animals\cerb.png" />
+    <None Remove="Resources\GameImages\Animals\cocos.jpg" />
+    <None Remove="Resources\GameImages\Animals\cocos.png" />
+    <None Remove="Resources\GameImages\Animals\girafa.jpg" />
+    <None Remove="Resources\GameImages\Animals\girafa.png" />
+    <None Remove="Resources\GameImages\Animals\iepure.jpg" />
+    <None Remove="Resources\GameImages\Animals\iepure.png" />
+    <None Remove="Resources\GameImages\Animals\panda.jpg" />
+    <None Remove="Resources\GameImages\Animals\panda.png" />
+    <None Remove="Resources\GameImages\Animals\papagal.jpg" />
+    <None Remove="Resources\GameImages\Animals\papagal.png" />
+    <None Remove="Resources\GameImages\Animals\pinguin.jpg" />
+    <None Remove="Resources\GameImages\Animals\pinguin.png" />
+    <None Remove="Resources\GameImages\Animals\pisica.png" />
+    <None Remove="Resources\GameImages\Animals\rata.jpg" />
+    <None Remove="Resources\GameImages\Animals\rata.png" />
+    <None Remove="Resources\GameImages\Animals\tigru.jpg" />
+    <None Remove="Resources\GameImages\Animals\tigru.png" />
+    <None Remove="Resources\GameImages\Animals\veverita.jpg" />
+    <None Remove="Resources\GameImages\Animals\veverita.png" />
+    <None Remove="Resources\GameImages\Animals\vulpe.jpg" />
     <None Remove="Resources\Avatars\av1.jpg" />
     <None Remove="Resources\Avatars\av2.jpg" />
     <None Remove="Resources\Avatars\av3.jpg" />
@@ -17,6 +46,45 @@
     <None Remove="Resources\Avatars\boy.png" />
     <None Remove="Resources\Avatars\boy2.png" />
     <None Remove="Resources\Avatars\lion.png" />
+    <None Remove="Resources\GameImages\Animals\vulpe.png" />
+    <None Remove="Resources\GameImages\Flowers\brandusa.png" />
+    <None Remove="Resources\GameImages\Flowers\bujor.png" />
+    <None Remove="Resources\GameImages\Flowers\camelie.png" />
+    <None Remove="Resources\GameImages\Flowers\crin.png" />
+    <None Remove="Resources\GameImages\Flowers\crizantema.png" />
+    <None Remove="Resources\GameImages\Flowers\crocus.png" />
+    <None Remove="Resources\GameImages\Flowers\f_colt.png" />
+    <None Remove="Resources\GameImages\Flowers\garoafa.png" />
+    <None Remove="Resources\GameImages\Flowers\ghiocel.png" />
+    <None Remove="Resources\GameImages\Flowers\iasomie.png" />
+    <None Remove="Resources\GameImages\Flowers\lalea.png" />
+    <None Remove="Resources\GameImages\Flowers\margareta.png" />
+    <None Remove="Resources\GameImages\Flowers\orhidee.png" />
+    <None Remove="Resources\GameImages\Flowers\panseluta.png" />
+    <None Remove="Resources\GameImages\Flowers\papadie.png" />
+    <None Remove="Resources\GameImages\Flowers\regina_noptii.png" />
+    <None Remove="Resources\GameImages\Flowers\soare.png" />
+    <None Remove="Resources\GameImages\Flowers\trandafir.png" />
+    <None Remove="Resources\GameImages\Numbers\1.jpg" />
+    <None Remove="Resources\GameImages\Numbers\1.png" />
+    <None Remove="Resources\GameImages\Numbers\10.jpg" />
+    <None Remove="Resources\GameImages\Numbers\10.png" />
+    <None Remove="Resources\GameImages\Numbers\2.jpg" />
+    <None Remove="Resources\GameImages\Numbers\2.png" />
+    <None Remove="Resources\GameImages\Numbers\3.jpg" />
+    <None Remove="Resources\GameImages\Numbers\3.png" />
+    <None Remove="Resources\GameImages\Numbers\4.jpg" />
+    <None Remove="Resources\GameImages\Numbers\4.png" />
+    <None Remove="Resources\GameImages\Numbers\5.jpg" />
+    <None Remove="Resources\GameImages\Numbers\5.png" />
+    <None Remove="Resources\GameImages\Numbers\6.jpg" />
+    <None Remove="Resources\GameImages\Numbers\6.png" />
+    <None Remove="Resources\GameImages\Numbers\7.jpg" />
+    <None Remove="Resources\GameImages\Numbers\7.png" />
+    <None Remove="Resources\GameImages\Numbers\8.jpg" />
+    <None Remove="Resources\GameImages\Numbers\8.png" />
+    <None Remove="Resources\GameImages\Numbers\9.jpg" />
+    <None Remove="Resources\GameImages\Numbers\9.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +101,135 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Avatars\av5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\caini.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\cal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\cameleon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\cerb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\cocos.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\girafa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\iepure.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\panda.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\papagal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\pinguin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\pisica.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\rata.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\tigru.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\veverita.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Animals\vulpe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\brandusa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\bujor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\camelie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\crin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\crizantema.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\crocus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\f_colt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\garoafa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\ghiocel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\iasomie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\lalea.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\margareta.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\orhidee.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\panseluta.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\papadie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\regina_noptii.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\soare.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Flowers\trandafir.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GameImages\Numbers\9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
