@@ -31,9 +31,11 @@ namespace GuessGame.ViewModels
 
         private readonly List<string> avatars = new()
         {
-            "pack://application:,,,/Resources/Avatars/lion.png",
-            "pack://application:,,,/Resources/Avatars/boy.png",
-            "pack://application:,,,/Resources/Avatars/boy2.png"
+            "pack://application:,,,/Resources/Avatars/av1.jpg",
+            "pack://application:,,,/Resources/Avatars/av2.jpg",
+            "pack://application:,,,/Resources/Avatars/av3.jpg",
+            "pack://application:,,,/Resources/Avatars/av4.jpg",
+            "pack://application:,,,/Resources/Avatars/av5.jpg"
         };
 
         private int _currentAvatarIndex = 0;

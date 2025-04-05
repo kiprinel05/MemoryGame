@@ -9,19 +9,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Avatars\av1.jpg" />
+    <None Remove="Resources\Avatars\av2.jpg" />
+    <None Remove="Resources\Avatars\av3.jpg" />
+    <None Remove="Resources\Avatars\av4.jpg" />
+    <None Remove="Resources\Avatars\av5.jpg" />
     <None Remove="Resources\Avatars\boy.png" />
     <None Remove="Resources\Avatars\boy2.png" />
     <None Remove="Resources\Avatars\lion.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Avatars\boy.png">
+    <Content Include="Resources\Avatars\av1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Avatars\boy2.png">
+    <Content Include="Resources\Avatars\av2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Avatars\lion.png">
+    <Content Include="Resources\Avatars\av3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\av4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\av5.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

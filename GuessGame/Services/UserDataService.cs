@@ -21,7 +21,7 @@ namespace GuessGame.Services
             }
             catch
             {
-                return new ObservableCollection<User>(); // fallback în caz de eroare
+                return new ObservableCollection<User>();
             }
         }
 
@@ -34,7 +34,6 @@ namespace GuessGame.Services
             }
             catch
             {
-                // eventual log
             }
         }
     }

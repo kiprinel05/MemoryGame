@@ -17,14 +17,12 @@
     </Window.DataContext>
 
     <Window.Resources>
-        <!-- Brushes -->
         <SolidColorBrush x:Key="PrimaryBrush" Color="#2d2d3a"/>
         <SolidColorBrush x:Key="SecondaryBrush" Color="#3a3a4d"/>
         <SolidColorBrush x:Key="AccentBrush" Color="#4e9cff"/>
         <SolidColorBrush x:Key="TextBrush" Color="#ffffff"/>
         <SolidColorBrush x:Key="MutedTextBrush" Color="#bbbbbb"/>
 
-        <!-- Button Style -->
         <Style TargetType="Button">
             <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
             <Setter Property="Foreground" Value="White"/>
@@ -50,7 +48,6 @@
             </Setter>
         </Style>
 
-        <!-- TextBox Style -->
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="{StaticResource SecondaryBrush}"/>
             <Setter Property="Foreground" Value="White"/>
@@ -83,7 +80,6 @@
             </Style.Triggers>
         </Style>
 
-        <!-- ListBox Style -->
         <Style TargetType="ListBox">
             <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -124,14 +120,12 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Title -->
         <TextBlock Text="Select a user:"
                    Foreground="{StaticResource TextBrush}"
                    FontWeight="Bold"
                    FontSize="18"
                    Margin="0 0 0 10"/>
 
-        <!-- User List -->
         <ListBox Grid.Row="1"
                  ItemsSource="{Binding Users}"
                  SelectedItem="{Binding SelectedUser}">
@@ -148,7 +142,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <!-- Buttons -->
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0 10">
             <Button Content="New User" Command="{Binding AddUserCommand}"/>
             <Button Content="Edit User" Command="{Binding EditUserCommand}"/>
@@ -156,7 +149,6 @@
             <Button Content="Login" Command="{Binding PlayCommand}"/>
         </WrapPanel>
 
-        <!-- User Form -->
         <Border Grid.Row="3"
                 Background="{StaticResource SecondaryBrush}"
                 CornerRadius="12"
