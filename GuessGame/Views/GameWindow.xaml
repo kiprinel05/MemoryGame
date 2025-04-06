@@ -109,29 +109,34 @@
     </Window.Resources>
 
     <DockPanel>
+        <StatusBar DockPanel.Dock="Top" Background="{StaticResource PrimaryBrush}">
+            <StatusBarItem>
+                <TextBlock x:Name="TimerText" Foreground="White" FontSize="14" FontWeight="Bold"/>
+            </StatusBarItem>
+        </StatusBar>
 
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="Category">
-                    <MenuItem Header="Animals" Click="Category_Click" Tag="Animals" />
-                    <MenuItem Header="Numbers" Click="Category_Click" Tag="Numbers" />
-                    <MenuItem Header="Flowers" Click="Category_Click" Tag="Flowers" />
+        <Menu DockPanel.Dock="Top" Background="{StaticResource PrimaryBrush}">
+            <MenuItem Header="_File" Foreground="White">
+                <MenuItem Header="Category" Foreground="Black">
+                    <MenuItem Header="Animals" Click="Category_Click" Tag="Animals" Foreground="Black"/>
+                    <MenuItem Header="Numbers" Click="Category_Click" Tag="Numbers" Foreground="Black"/>
+                    <MenuItem Header="Flowers" Click="Category_Click" Tag="Flowers" Foreground="Black"/>
                 </MenuItem>
-                <MenuItem Header="New Game" Click="NewGame_Click"/>
-                <MenuItem Header="Open Game" Click="LoadGame_Click" />
-                <MenuItem Header="Save Game" Click="SaveGame_Click"/>
-                <MenuItem Header="Statistics"/>
+                <MenuItem Header="New Game" Click="NewGame_Click" Foreground="Black"/>
+                <MenuItem Header="Open Game" Click="LoadGame_Click" Foreground="Black"/>
+                <MenuItem Header="Save Game" Click="SaveGame_Click" Foreground="Black"/>
+                <MenuItem Header="Statistics" Foreground="Black"/>
                 <Separator />
-                <MenuItem Header="Exit" Click="Exit_Click"/>
+                <MenuItem Header="Exit" Click="Exit_Click" Foreground="Black"/>
             </MenuItem>
 
-            <MenuItem Header="_Options">
-                <MenuItem Header="Standard"/>
-                <MenuItem Header="Custom"/>
+            <MenuItem Header="_Options" Foreground="White">
+                <MenuItem Header="Standard" Click="Standard_Click" Foreground="Black"/>
+                <MenuItem Header="Custom" Click="Custom_Click" Foreground="Black"/>
             </MenuItem>
 
-            <MenuItem Header="_Help">
-                <MenuItem Header="About"/>
+            <MenuItem Header="_Help" Foreground="White">
+                <MenuItem Header="About" Foreground="Black"/>
             </MenuItem>
         </Menu>
 

@@ -21,7 +21,22 @@ namespace GuessGame.Views
         {
             InitializeComponent();
             _viewModel = new GameViewModel(user);
-            DrawBoard();
+
+            // Set up timer events
+            _viewModel.TimeUpdated += UpdateTimerDisplay;
+            _viewModel.GameLost += OnGameLost;
+
+            // Show time limit dialog
+            var timeDialog = new TimeLimitDialog { Owner = this };
+            if (timeDialog.ShowDialog() == true)
+            {
+                _viewModel.InitializeTimer(timeDialog.SelectedTime);
+                DrawBoard();
+            }
+            else
+            {
+                Close();
+            }
         }
 
         private void DrawBoard()
@@ -152,6 +167,51 @@ namespace GuessGame.Views
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+        private void Standard_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ResetToStandardSize();
+            DrawBoard();
+        }
+
+        private void Custom_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CustomSizeDialog { Owner = this };
+            if (dialog.ShowDialog() == true)
+            {
+                _viewModel.SetBoardSize(dialog.Rows, dialog.Columns);
+                DrawBoard();
+            }
+        }
+        private void UpdateTimerDisplay()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                TimerText.Text = $"Time Remaining: {_viewModel.RemainingTime:mm\\:ss}";
+
+                // Change color when time is running low
+                if (_viewModel.RemainingTime.TotalSeconds < 30)
+                {
+                    TimerText.Foreground = Brushes.Red;
+                }
+                else if (_viewModel.RemainingTime.TotalSeconds < 60)
+                {
+                    TimerText.Foreground = Brushes.Yellow;
+                }
+                else
+                {
+                    TimerText.Foreground = Brushes.White;
+                }
+            });
+        }
+
+        private void OnGameLost()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                MessageBox.Show("Time's up! Game over.", "Game Over", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                Close();
+            });
         }
     }
 

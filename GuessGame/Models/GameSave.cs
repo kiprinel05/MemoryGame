@@ -12,6 +12,7 @@ namespace GuessGame.Models
         public List<string> TileImages { get; set; }
         public List<bool> RevealedTiles { get; set; }
         public TimeSpan ElapsedTime { get; set; }
-        public TimeSpan TotalTime { get; set; }
+        public TimeSpan TimeLimit { get; set; }
+        public DateTime SaveTime { get; set; }
     }
 }

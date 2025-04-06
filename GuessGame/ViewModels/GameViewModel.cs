@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using GuessGame.Models;
 using GuessGame.Views;
 
@@ -27,18 +28,62 @@ namespace GuessGame.ViewModels
         public string SaveDirectory => Path.Combine("SavedGames", User.Name);
         public string SaveFilePath => Path.Combine("SavedGames", $"{User.Name}.json");
 
+
+        public TimeSpan TimeLimit { get; private set; }
+        public TimeSpan RemainingTime { get; private set; }
+        private DateTime _gameStartTime;
+        private DispatcherTimer _gameTimer;
+        public event Action TimeUpdated;
+        public event Action GameLost;
+
+
         public GameViewModel(User user)
         {
             User = user;
-            if (File.Exists(SaveFilePath))
-                LoadGame();
-            else
+            try
+            {
+                if (File.Exists(SaveFilePath))
+                    LoadGame();
+                else
+                    NewGame();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading game: {ex.Message}");
                 NewGame();
+            }
         }
 
         public void NewGame()
         {
             GenerateTiles();
+        }
+
+        public void SetBoardSize(int rows, int columns)
+        {
+            // Validăm că avem un număr par de celule
+            if ((rows * columns) % 2 != 0)
+            {
+                MessageBox.Show("Total tiles must be even (Rows × Columns should be even)");
+                return;
+            }
+
+            if (rows < 2 || rows > 6 || columns < 2 || columns > 6)
+            {
+                MessageBox.Show("Rows and columns must be between 2 and 6");
+                return;
+            }
+
+            Rows = rows;
+            Columns = columns;
+            NewGame();
+        }
+
+        public void ResetToStandardSize()
+        {
+            Rows = 4;
+            Columns = 4;
+            NewGame();
         }
         private void GenerateTiles()
         {
@@ -72,7 +117,10 @@ namespace GuessGame.ViewModels
                 Rows = Rows,
                 Columns = Columns,
                 TileImages = TileImages,
-                RevealedTiles = RevealedTiles
+                RevealedTiles = RevealedTiles,
+                TimeLimit = TimeLimit,
+                ElapsedTime = DateTime.Now - _gameStartTime,
+                SaveTime = DateTime.Now
             };
 
             Directory.CreateDirectory(SaveDirectory);
@@ -80,7 +128,6 @@ namespace GuessGame.ViewModels
             string path = Path.Combine(SaveDirectory, fileName);
             File.WriteAllText(path, JsonSerializer.Serialize(data));
         }
-
         public void LoadGame()
         {
             try
@@ -100,6 +147,7 @@ namespace GuessGame.ViewModels
                 NewGame();
             }
         }
+
         public void LoadFromSave(GameSave data)
         {
             SelectedCategory = data.Category;
@@ -107,7 +155,46 @@ namespace GuessGame.ViewModels
             Columns = data.Columns;
             TileImages = data.TileImages;
             RevealedTiles = data.RevealedTiles;
+            TimeLimit = data.TimeLimit;
+
+            var timeSinceSave = DateTime.Now - data.SaveTime;
+            RemainingTime = data.TimeLimit - data.ElapsedTime - timeSinceSave;
+
+            if (RemainingTime > TimeSpan.Zero)
+            {
+                _gameStartTime = DateTime.Now - data.ElapsedTime;
+                InitializeTimer(TimeLimit);
+            }
+            else
+            {
+                GameLost?.Invoke();
+            }
         }
 
+        public void InitializeTimer(TimeSpan timeLimit)
+        {
+            TimeLimit = timeLimit;
+            RemainingTime = timeLimit;
+            _gameStartTime = DateTime.Now;
+
+            _gameTimer = new DispatcherTimer();
+            _gameTimer.Interval = TimeSpan.FromSeconds(1);
+            _gameTimer.Tick += GameTimer_Tick;
+            _gameTimer.Start();
+        }
+
+        private void GameTimer_Tick(object sender, EventArgs e)
+        {
+            var elapsed = DateTime.Now - _gameStartTime;
+            RemainingTime = TimeLimit - elapsed;
+
+            TimeUpdated?.Invoke();
+
+            if (RemainingTime <= TimeSpan.Zero)
+            {
+                _gameTimer.Stop();
+                GameLost?.Invoke();
+            }
+        }
     }
 }

@@ -1,0 +1,26 @@
+﻿<Window x:Class="GuessGame.Views.TimeLimitDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Set Time Limit" Height="200" Width="300"
+        WindowStartupLocation="CenterOwner"
+        Background="#1e1e2f">
+
+    <StackPanel Margin="15">
+        <TextBlock Text="Set Time Limit (minutes):" 
+                  Foreground="White" 
+                  Margin="0 0 0 10"/>
+
+        <ComboBox x:Name="TimeComboBox" SelectedIndex="2">
+            <ComboBoxItem>1</ComboBoxItem>
+            <ComboBoxItem>2</ComboBoxItem>
+            <ComboBoxItem>3</ComboBoxItem>
+            <ComboBoxItem>5</ComboBoxItem>
+            <ComboBoxItem>10</ComboBoxItem>
+        </ComboBox>
+
+        <Button Content="Start Game" 
+                Click="StartButton_Click" 
+                Margin="0 20 0 0"
+                Style="{StaticResource {x:Type Button}}"/>
+    </StackPanel>
+</Window>
