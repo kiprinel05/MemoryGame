@@ -1,0 +1,47 @@
+﻿<Window x:Class="GuessGame.Views.StatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Game Statistics" Height="450" Width="500"
+        Background="#1e1e2f"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Player Statistics" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Foreground="White" 
+                   Margin="0,0,0,20"/>
+
+        <DataGrid Grid.Row="1" 
+                  Name="StatsGrid" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True"
+                  Background="#2d2d3a"
+                  RowBackground="#3a3a4d"
+                  AlternatingRowBackground="#444455"
+                  Foreground="White"
+                  BorderThickness="0"
+                  GridLinesVisibility="None"
+                  ColumnHeaderHeight="40">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Player" Binding="{Binding UserName}" Width="*"/>
+                <DataGridTextColumn Header="Games Played" Binding="{Binding GamesPlayed}" Width="*"/>
+                <DataGridTextColumn Header="Games Won" Binding="{Binding GamesWon}" Width="*"/>
+                <DataGridTextColumn Header="Win Rate" Binding="{Binding WinRate}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#4e9cff"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Padding" Value="10,5"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+    </Grid>
+</Window>

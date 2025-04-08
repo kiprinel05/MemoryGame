@@ -125,7 +125,7 @@
                 <MenuItem Header="New Game" Click="NewGame_Click" Foreground="Black"/>
                 <MenuItem Header="Open Game" Click="LoadGame_Click" Foreground="Black"/>
                 <MenuItem Header="Save Game" Click="SaveGame_Click" Foreground="Black"/>
-                <MenuItem Header="Statistics" Foreground="Black"/>
+                <MenuItem Header="Statistics" Click="Statistics_Click" Foreground="Black"/>
                 <Separator />
                 <MenuItem Header="Exit" Click="Exit_Click" Foreground="Black"/>
             </MenuItem>

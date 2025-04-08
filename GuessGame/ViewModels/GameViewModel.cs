@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using GuessGame.Models;
+using GuessGame.Services;
 using GuessGame.Views;
 
 namespace GuessGame.ViewModels
@@ -193,8 +194,26 @@ namespace GuessGame.ViewModels
             if (RemainingTime <= TimeSpan.Zero)
             {
                 _gameTimer.Stop();
+                SaveStatistics(false); // Înregistrează jocul ca pierdut
                 GameLost?.Invoke();
             }
+        }
+
+        public event Action GameWon;
+
+        public bool CheckWinCondition()
+        {
+            if (RevealedTiles.All(revealed => revealed))
+            {
+                _gameTimer?.Stop();
+                GameWon?.Invoke();
+                return true;
+            }
+            return false;
+        }
+        public void SaveStatistics(bool won)
+        {
+            StatisticsService.UpdateUserStatistics(User.Name, won);
         }
     }
 }

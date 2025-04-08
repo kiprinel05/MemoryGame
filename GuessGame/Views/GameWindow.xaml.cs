@@ -21,22 +21,10 @@ namespace GuessGame.Views
         {
             InitializeComponent();
             _viewModel = new GameViewModel(user);
-
-            // Set up timer events
+            DrawBoard();
             _viewModel.TimeUpdated += UpdateTimerDisplay;
             _viewModel.GameLost += OnGameLost;
-
-            // Show time limit dialog
-            var timeDialog = new TimeLimitDialog { Owner = this };
-            if (timeDialog.ShowDialog() == true)
-            {
-                _viewModel.InitializeTimer(timeDialog.SelectedTime);
-                DrawBoard();
-            }
-            else
-            {
-                Close();
-            }
+            _viewModel.GameWon += OnGameWon;
         }
 
         private void DrawBoard()
@@ -89,6 +77,7 @@ namespace GuessGame.Views
                     _viewModel.RevealedTiles[firstIndex] = true;
                     _viewModel.RevealedTiles[secondIndex] = true;
                     _viewModel.FirstClicked = _viewModel.SecondClicked = null;
+                    _viewModel.CheckWinCondition();
                     _viewModel.SaveGame();
                 }
                 else
@@ -122,9 +111,15 @@ namespace GuessGame.Views
         }
         private void NewGame_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.NewGame();
-            DrawBoard();
+            var timeDialog = new TimeLimitDialog { Owner = this };
+            if (timeDialog.ShowDialog() == true)
+            {
+                _viewModel.InitializeTimer(timeDialog.SelectedTime);
+                _viewModel.NewGame();
+                DrawBoard();
+            }
         }
+
 
         private void LoadGame_Click(object sender, RoutedEventArgs e)
         {
@@ -176,11 +171,16 @@ namespace GuessGame.Views
 
         private void Custom_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CustomSizeDialog { Owner = this };
-            if (dialog.ShowDialog() == true)
+            var sizeDialog = new CustomSizeDialog { Owner = this };
+            if (sizeDialog.ShowDialog() == true)
             {
-                _viewModel.SetBoardSize(dialog.Rows, dialog.Columns);
-                DrawBoard();
+                var timeDialog = new TimeLimitDialog { Owner = this };
+                if (timeDialog.ShowDialog() == true)
+                {
+                    _viewModel.InitializeTimer(timeDialog.SelectedTime);
+                    _viewModel.SetBoardSize(sizeDialog.Rows, sizeDialog.Columns);
+                    DrawBoard();
+                }
             }
         }
         private void UpdateTimerDisplay()
@@ -189,7 +189,6 @@ namespace GuessGame.Views
             {
                 TimerText.Text = $"Time Remaining: {_viewModel.RemainingTime:mm\\:ss}";
 
-                // Change color when time is running low
                 if (_viewModel.RemainingTime.TotalSeconds < 30)
                 {
                     TimerText.Foreground = Brushes.Red;
@@ -212,6 +211,24 @@ namespace GuessGame.Views
                 MessageBox.Show("Time's up! Game over.", "Game Over", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 Close();
             });
+        }
+        private void OnGameWon()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                MessageBox.Show("Congratulations! You won!", "Game Won", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Salvăm statisticile
+                _viewModel.SaveStatistics(true);
+
+                Close();
+            });
+        }
+        private void Statistics_Click(object sender, RoutedEventArgs e)
+        {
+            var statisticsWindow = new StatisticsWindow();
+            statisticsWindow.Owner = this;
+            statisticsWindow.ShowDialog();
         }
     }
 
