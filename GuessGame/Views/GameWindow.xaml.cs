@@ -138,10 +138,7 @@ namespace GuessGame.Views
                     _viewModel.LoadFromSave(data);
                     DrawBoard();
                 }
-                catch
-                {
-                    MessageBox.Show("Eroare la încărcarea jocului.");
-                }
+                catch {}
             }
         }
         private void SaveGame_Click(object sender, RoutedEventArgs e)
@@ -208,7 +205,7 @@ namespace GuessGame.Views
         {
             Dispatcher.Invoke(() =>
             {
-                MessageBox.Show("Time's up! Game over.", "Game Over", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("You Lost", "Game Lost", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 Close();
             });
         }
@@ -216,9 +213,8 @@ namespace GuessGame.Views
         {
             Dispatcher.Invoke(() =>
             {
-                MessageBox.Show("Congratulations! You won!", "Game Won", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You won!", "Game Won", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                // Salvăm statisticile
                 _viewModel.SaveStatistics(true);
 
                 Close();
@@ -229,6 +225,12 @@ namespace GuessGame.Views
             var statisticsWindow = new StatisticsWindow();
             statisticsWindow.Owner = this;
             statisticsWindow.ShowDialog();
+        }
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            var aboutWindow = new About();
+            aboutWindow.Owner = this;
+            aboutWindow.ShowDialog();
         }
     }
 

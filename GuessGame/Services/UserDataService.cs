@@ -32,9 +32,7 @@ namespace GuessGame.Services
                 var json = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(FilePath, json);
             }
-            catch
-            {
-            }
+            catch {}
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿// StatisticsService.cs
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,10 +34,7 @@ namespace GuessGame.Services
                 var json = JsonSerializer.Serialize(statistics, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(FilePath, json);
             }
-            catch
-            {
-                // Log eventual
-            }
+            catch {}
         }
 
         public static void UpdateUserStatistics(string userName, bool won)

@@ -1,5 +1,4 @@
-﻿// StatisticsWindow.xaml.cs
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -20,7 +19,6 @@ namespace GuessGame.Views
         {
             var stats = StatisticsService.LoadStatistics();
 
-            // Calculează rata de câștig pentru fiecare utilizator
             var displayStats = stats.Select(s => new
             {
                 s.UserName,

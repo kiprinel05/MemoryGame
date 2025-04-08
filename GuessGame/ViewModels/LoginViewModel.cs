@@ -146,7 +146,7 @@ namespace GuessGame.ViewModels
         {
             if (string.IsNullOrWhiteSpace(EditingUser?.Name))
             {
-                MessageBox.Show("Name cannot be empty.");
+                MessageBox.Show("Name cannot be empty");
                 return;
             }
 
@@ -154,14 +154,12 @@ namespace GuessGame.ViewModels
 
             if (_originalUserForEdit != null)
             {
-                // Editare
                 _originalUserForEdit.Name = EditingUser.Name;
                 _originalUserForEdit.AvatarPath = EditingUser.AvatarPath;
                 SelectedUser = _originalUserForEdit;
             }
             else
             {
-                // Adăugare
                 var newUser = new User
                 {
                     Name = EditingUser.Name,
@@ -192,8 +190,6 @@ namespace GuessGame.ViewModels
                 Application.Current.MainWindow.Close();
             }
         }
-
-
         private void NextAvatar()
         {
             _currentAvatarIndex = (_currentAvatarIndex + 1) % avatars.Count;

@@ -20,7 +20,7 @@ namespace GuessGame.Views
 
             if ((Rows * Columns) % 2 != 0)
             {
-                MessageBox.Show("Total tiles must be even (Rows × Columns should be even)");
+                MessageBox.Show("Total tiles must be even");
                 return;
             }
 

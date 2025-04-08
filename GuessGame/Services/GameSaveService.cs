@@ -34,10 +34,7 @@ namespace GuessGame.Services
                 var json = JsonSerializer.Serialize(save, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(GetSavePath(save.UserName), json);
             }
-            catch
-            {
-                // log eventual
-            }
+            catch {}
         }
 
         public static void Delete(string userName)
@@ -48,10 +45,7 @@ namespace GuessGame.Services
                 if (File.Exists(path))
                     File.Delete(path);
             }
-            catch
-            {
-                // log eventual
-            }
+            catch {}
         }
     }
 }

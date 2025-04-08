@@ -18,7 +18,7 @@ namespace GuessGame.ViewModels
     public class GameViewModel
     {
         public User User { get; private set; }
-        public string SelectedCategory { get; set; } = "Flowers";
+        public string SelectedCategory { get; set; } = "Animals";
         public int Rows { get; set; } = 4;
         public int Columns { get; set; } = 4;
 
@@ -62,10 +62,9 @@ namespace GuessGame.ViewModels
 
         public void SetBoardSize(int rows, int columns)
         {
-            // Validăm că avem un număr par de celule
             if ((rows * columns) % 2 != 0)
             {
-                MessageBox.Show("Total tiles must be even (Rows × Columns should be even)");
+                MessageBox.Show("Total tiles must be even");
                 return;
             }
 
@@ -98,7 +97,7 @@ namespace GuessGame.ViewModels
 
             if (files.Count < neededPairs)
             {
-                MessageBox.Show("Nu sunt suficiente imagini în categoria selectată.");
+                MessageBox.Show("Nu sunt suficiente imagini");
                 return;
             }
 
@@ -194,7 +193,7 @@ namespace GuessGame.ViewModels
             if (RemainingTime <= TimeSpan.Zero)
             {
                 _gameTimer.Stop();
-                SaveStatistics(false); // Înregistrează jocul ca pierdut
+                SaveStatistics(false);
                 GameLost?.Invoke();
             }
         }

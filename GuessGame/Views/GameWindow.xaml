@@ -136,7 +136,7 @@
             </MenuItem>
 
             <MenuItem Header="_Help" Foreground="White">
-                <MenuItem Header="About" Foreground="Black"/>
+                <MenuItem Header="About" Click="About_Click" Foreground="Black"/>
             </MenuItem>
         </Menu>
 

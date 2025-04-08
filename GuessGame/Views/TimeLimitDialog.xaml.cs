@@ -21,7 +21,7 @@ namespace GuessGame.Views
             }
             else
             {
-                MessageBox.Show("Please select a valid time limit.");
+                MessageBox.Show("select a valid time limit");
             }
         }
     }
