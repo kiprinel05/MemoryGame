@@ -120,6 +120,7 @@ namespace GuessGame.ViewModels
                 RevealedTiles = RevealedTiles,
                 TimeLimit = TimeLimit,
                 ElapsedTime = DateTime.Now - _gameStartTime,
+                RemainingTime = this.RemainingTime,
                 SaveTime = DateTime.Now
             };
 
@@ -157,12 +158,11 @@ namespace GuessGame.ViewModels
             RevealedTiles = data.RevealedTiles;
             TimeLimit = data.TimeLimit;
 
-            var timeSinceSave = DateTime.Now - data.SaveTime;
-            RemainingTime = data.TimeLimit - data.ElapsedTime - timeSinceSave;
+            RemainingTime = data.RemainingTime;
 
             if (RemainingTime > TimeSpan.Zero)
             {
-                _gameStartTime = DateTime.Now - data.ElapsedTime;
+                _gameStartTime = DateTime.Now - (TimeLimit - RemainingTime);
                 InitializeTimer(TimeLimit);
             }
             else

@@ -14,5 +14,7 @@ namespace GuessGame.Models
         public TimeSpan ElapsedTime { get; set; }
         public TimeSpan TimeLimit { get; set; }
         public DateTime SaveTime { get; set; }
+        public TimeSpan RemainingTime { get; set; }
+
     }
 }

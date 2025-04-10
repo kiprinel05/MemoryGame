@@ -17,7 +17,7 @@ namespace GuessGame.Views
     {
         private GameViewModel _viewModel;
 
-        public GameWindow(User user)
+        public GameWindow(User user)    
         {
             InitializeComponent();
             _viewModel = new GameViewModel(user);
