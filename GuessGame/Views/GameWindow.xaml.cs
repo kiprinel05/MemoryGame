@@ -72,7 +72,7 @@ namespace GuessGame.Views
                 int firstIndex = (int)_viewModel.FirstClicked.Tag;
                 int secondIndex = (int)_viewModel.SecondClicked.Tag;
 
-                if (_viewModel.TileImages[firstIndex] == _viewModel.TileImages[secondIndex])
+                if (_viewModel.TileImages[firstIndex] == _viewModel.TileImages[secondIndex] && firstIndex != secondIndex)
                 {
                     _viewModel.RevealedTiles[firstIndex] = true;
                     _viewModel.RevealedTiles[secondIndex] = true;

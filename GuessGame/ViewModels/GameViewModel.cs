@@ -97,7 +97,7 @@ namespace GuessGame.ViewModels
 
             if (files.Count < neededPairs)
             {
-                MessageBox.Show("Nu sunt suficiente imagini");
+                MessageBox.Show("There are not enough images");
                 return;
             }
 
